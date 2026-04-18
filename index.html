@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MD Media | Founder Personal Branding</title>
+<meta name="description" content="AI can write. It can't be you. We help founders build the personal brand AI can't fake.">
+<style>
+  :root {
+    --blue: #0057FF;
+    --blue-deep: #1D233E;
+    --blue-deeper: #14182C;
+    --orange: #FF5C00;
+    --ink: #0F0F0F;
+    --ink-soft: #2A2A2A;
+    --grey-700: #5A5A5A;
+    --grey-500: #8A8A8A;
+    --grey-300: #D4D4D4;
+    --grey-200: #E8E5DF;
+    --grey-100: #F0EDE6;
+    --bg: #F7F4EE;
+    --bg-warm: #F2EEE5;
+    --white: #FFFFFF;
+    --font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  /* SCROLL ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s cubic-bezier(0.2, 0.8, 0.2, 1),
+                transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .fade-up.delay-1 { transition-delay: 0.1s; }
+  .fade-up.delay-2 { transition-delay: 0.2s; }
+  .fade-up.delay-3 { transition-delay: 0.3s; }
+
+  body {
+    font-family: var(--font);
+    font-weight: 300;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  .container-narrow {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(247, 244, 238, 0.92);
+    backdrop-filter: blur(16px);
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+
+  .nav-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 0.15em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .nav-cta {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 2px;
+    transition: all 0.2s;
+  }
+  .nav-cta:hover { color: var(--blue); border-color: var(--blue); }
+
+  /* TYPE */
+  section { padding: 120px 0; position: relative; }
+
+  /* PAGE DIVIDER */
+  .divider {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+  .divider-line {
+    height: 1px;
+    background: var(--grey-300);
+  }
+
+  .eyebrow {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--grey-500);
+    margin-bottom: 32px;
+  }
+
+  h1 {
+    font-weight: 500;
+    font-size: clamp(48px, 7vw, 88px);
+    line-height: 0.98;
+    letter-spacing: -0.045em;
+    margin-bottom: 32px;
+    color: var(--ink);
+  }
+
+  h1 .accent {
+    color: var(--blue);
+    font-weight: 500;
+  }
+
+  h2 {
+    font-weight: 500;
+    font-size: clamp(34px, 4.5vw, 52px);
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    margin-bottom: 28px;
+    color: var(--ink);
+    max-width: 720px;
+  }
+
+  h2 .accent { color: var(--blue); font-weight: 500; }
+
+  h3 {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+
+  .lead {
+    font-size: 19px;
+    line-height: 1.55;
+    font-weight: 300;
+    color: var(--grey-700);
+    max-width: 620px;
+    margin-bottom: 48px;
+  }
+
+  p { font-weight: 300; line-height: 1.65; color: var(--ink-soft); }
+
+  /* LINKS AS BUTTONS */
+  .link {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 10px;
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 4px;
+    transition: all 0.2s ease;
+  }
+
+  .link:hover { color: var(--blue); border-color: var(--blue); gap: 14px; }
+  .link .arrow { transition: transform 0.2s ease; display: inline-block; }
+  .link:hover .arrow { transform: translateX(3px); }
+
+  .link-row {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+  }
+
+  .link-muted { color: var(--grey-700); border-color: var(--grey-300); }
+  .link-muted:hover { color: var(--blue); border-color: var(--blue); }
+
+  /* HERO */
+  .hero { padding: 100px 0 140px; position: relative; overflow: hidden; }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .hero-text { max-width: 580px; }
+
+  .hero-image {
+    position: relative;
+    aspect-ratio: 4/5;
+    overflow: hidden;
+  }
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* STATEMENT */
+  .statement {
+    padding: 140px 0;
+    position: relative;
+  }
+  .statement p {
+    font-size: clamp(24px, 3vw, 34px);
+    font-weight: 300;
+    line-height: 1.4;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    max-width: 820px;
+  }
+  .statement p .accent { color: var(--blue); }
+  .statement p .strong { font-weight: 400; color: var(--ink); }
+
+  /* PROBLEM */
+  .problem-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 72px;
+    background: var(--grey-200);
+    border-top: 1px solid var(--grey-200);
+    border-bottom: 1px solid var(--grey-200);
+  }
+  .problem-card {
+    background: var(--bg);
+    padding: 56px 40px;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  .problem-card:first-child { padding-left: 0; }
+  .problem-card:last-child { padding-right: 0; }
+  .problem-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 40px;
+    width: 0;
+    height: 2px;
+    background: var(--blue);
+    transition: width 0.35s ease;
+  }
+  .problem-card:first-child::after { left: 0; }
+  .problem-card:hover::after { width: calc(60% - 20px); }
+  .problem-card:hover .problem-num { color: var(--orange); }
+  .problem-num {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--blue);
+    letter-spacing: 0.1em;
+    margin-bottom: 24px;
+    display: block;
+    transition: color 0.3s ease;
+  }
+  .problem-card h3 { font-size: 21px; margin-bottom: 16px; font-weight: 500; }
+  .problem-card p { color: var(--grey-700); font-size: 15px; }
+
+  /* SHIFT */
+  .shift { padding: 140px 0; }
+  .shift p {
+    color: var(--ink-soft);
+    font-size: 19px;
+    max-width: 720px;
+    line-height: 1.7;
+  }
+  .shift p + p { margin-top: 20px; }
+
+  /* GALLERY */
+  .gallery-section {
+    padding: 0;
+  }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 2px;
+  }
+  .gallery-item {
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    background: var(--grey-100);
+  }
+  .gallery-item.wide { aspect-ratio: 3/2; }
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 1s ease;
+  }
+  .gallery-item:hover img { transform: scale(1.03); }
+
+  /* GAIN */
+  .gain-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 56px;
+    margin-top: 72px;
+  }
+  .gain-item {
+    padding-top: 32px;
+    border-top: 1px solid var(--ink);
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  .gain-item::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: var(--blue);
+    transition: width 0.35s ease;
+  }
+  .gain-item:hover::before { width: 100%; }
+  .gain-num {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--blue);
+    letter-spacing: 0.15em;
+    margin-bottom: 20px;
+    transition: color 0.3s ease;
+  }
+  .gain-item:hover .gain-num { color: var(--orange); }
+  .gain-item h3 { font-size: 19px; margin-bottom: 14px; font-weight: 500; }
+  .gain-item p { font-size: 15px; color: var(--grey-700); line-height: 1.65; }
+
+  /* OFFERS */
+  .offers-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 64px;
+    background: var(--grey-200);
+    border-top: 1px solid var(--grey-200);
+    border-bottom: 1px solid var(--grey-200);
+  }
+
+  .offer-card {
+    padding: 64px 48px;
+    background: var(--bg);
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  .offer-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 48px;
+    width: 0;
+    height: 2px;
+    background: var(--blue);
+    transition: width 0.4s ease;
+  }
+  .offer-card:hover::after { width: calc(50% - 24px); }
+
+  .offer-card:first-child { padding-left: 0; }
+  .offer-card:first-child::after { left: 0; }
+  .offer-card:last-child { padding-right: 0; }
+
+  .offer-tag {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 24px;
+    display: block;
+  }
+
+  .offer-card h3 { font-size: 28px; margin-bottom: 16px; font-weight: 400; letter-spacing: -0.02em; }
+
+  .offer-for {
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--grey-700);
+    margin-bottom: 36px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--grey-300);
+    line-height: 1.6;
+    max-width: 460px;
+  }
+
+  .offer-list { list-style: none; }
+  .offer-list li {
+    padding: 14px 0;
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--ink-soft);
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    border-bottom: 1px solid var(--grey-200);
+  }
+  .offer-list li::before {
+    content: '—';
+    color: var(--blue);
+    flex-shrink: 0;
+    font-weight: 400;
+  }
+
+  /* CALL */
+  .call-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 56px;
+    margin-top: 72px;
+  }
+  .call-item h3 { font-size: 19px; margin-bottom: 14px; font-weight: 500; }
+  .call-item p { font-size: 15px; color: var(--grey-700); line-height: 1.65; }
+  .call-num {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--blue);
+    letter-spacing: 0.15em;
+    margin-bottom: 20px;
+  }
+
+  /* WHO FOR */
+  .who-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    margin-top: 56px;
+  }
+  .who-col h3 {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--ink);
+    letter-spacing: -0.005em;
+  }
+  .who-col.no h3 { color: var(--grey-500); border-bottom-color: var(--grey-300); }
+  .who-list { list-style: none; }
+  .who-list li {
+    padding: 16px 0;
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--ink-soft);
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    line-height: 1.55;
+  }
+  .who-col.yes li::before {
+    content: '→';
+    color: var(--blue);
+    flex-shrink: 0;
+  }
+  .who-col.no li {
+    color: var(--grey-500);
+  }
+  .who-col.no li::before {
+    content: '→';
+    color: var(--grey-300);
+    flex-shrink: 0;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    align-items: start;
+    margin-top: 32px;
+  }
+  .about-image {
+    aspect-ratio: 3/4;
+    overflow: hidden;
+  }
+  .about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .about-text p { font-size: 17px; color: var(--ink-soft); margin-bottom: 22px; line-height: 1.7; }
+  .founders-tag {
+    display: block;
+    margin-top: 24px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  /* FAQ */
+  .faq-list { margin-top: 56px; }
+  .faq-item { border-bottom: 1px solid var(--grey-300); }
+  .faq-q {
+    width: 100%;
+    padding: 32px 0;
+    background: transparent;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    cursor: pointer;
+    font-family: var(--font);
+    font-size: 19px;
+    font-weight: 400;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .faq-icon {
+    color: var(--blue);
+    font-size: 22px;
+    font-weight: 300;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+    margin-left: 20px;
+  }
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.3s ease;
+  }
+  .faq-item.open .faq-a { max-height: 400px; padding: 0 0 32px; }
+  .faq-a p { font-size: 16px; color: var(--grey-700); line-height: 1.7; max-width: 720px; }
+
+  /* APPLY */
+  .apply {
+    padding: 140px 0;
+    background: var(--blue-deep);
+    color: var(--bg);
+    position: relative;
+    overflow: hidden;
+  }
+  .apply::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    right: -150px;
+    width: 550px;
+    height: 550px;
+    background: radial-gradient(circle, var(--blue) 0%, transparent 65%);
+    opacity: 0.35;
+    pointer-events: none;
+  }
+  .apply .eyebrow { color: var(--grey-300); }
+  .apply h2 {
+    max-width: 760px;
+    color: var(--bg);
+    position: relative;
+  }
+  .apply h2 .accent { color: var(--orange); }
+  .apply .lead { color: rgba(247, 244, 238, 0.75); position: relative; }
+
+  .form-wrap {
+    margin-top: 64px;
+    max-width: 680px;
+    position: relative;
+  }
+
+  .form-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--bg);
+    margin-bottom: 8px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .form-sub {
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(247, 244, 238, 0.55);
+    margin-bottom: 48px;
+  }
+
+  .form-group { margin-bottom: 32px; }
+  .form-label {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(247, 244, 238, 0.55);
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+  .form-input, .form-select, .form-textarea {
+    width: 100%;
+    padding: 14px 0;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(247, 244, 238, 0.2);
+    font-family: var(--font);
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--bg);
+    transition: border-color 0.2s;
+    border-radius: 0;
+  }
+  .form-textarea { resize: vertical; min-height: 70px; padding: 14px 0; }
+  .form-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%23D4D4D4' d='M5 7L1 3h8z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 4px center;
+    padding-right: 28px;
+  }
+  .form-select option { background: var(--blue-deep); color: var(--bg); }
+  .form-input:focus, .form-select:focus, .form-textarea:focus {
+    outline: none;
+    border-bottom-color: var(--orange);
+  }
+  .form-input::placeholder, .form-textarea::placeholder { color: rgba(247, 244, 238, 0.35); }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .submit-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 32px;
+    background: var(--orange);
+    color: var(--bg);
+    font-family: var(--font);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 16px;
+  }
+  .submit-btn:hover { background: var(--bg); color: var(--blue-deep); }
+
+  .form-success {
+    padding: 40px 0;
+  }
+  .form-success h3 {
+    font-size: 28px;
+    color: var(--bg);
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+    font-weight: 500;
+  }
+  .form-success p {
+    font-size: 16px;
+    color: rgba(247, 244, 238, 0.7);
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 56px 0 40px;
+    background: var(--bg);
+  }
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 12px;
+    color: var(--grey-500);
+    letter-spacing: 0.08em;
+  }
+  .footer-inner strong { color: var(--ink); font-weight: 500; letter-spacing: 0.15em; }
+  .footer-inner a { color: var(--grey-500); text-decoration: none; margin-left: 28px; }
+  .footer-inner a:hover { color: var(--blue); }
+
+  /* RESPONSIVE */
+  @media (max-width: 860px) {
+    .container, .container-narrow { padding: 0 24px; }
+    section { padding: 80px 0; }
+    .hero { padding: 56px 0 80px; }
+    .statement, .shift, .apply { padding: 80px 0; }
+    .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+    .hero-image { aspect-ratio: 4/5; max-width: 480px; margin: 0 auto; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    .gallery-item.wide { grid-column: span 2; }
+    .offers-grid, .problem-grid, .gain-grid, .call-grid, .who-grid, .about-grid {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    .problem-grid { gap: 2px; }
+    .offers-grid { gap: 2px; }
+    .problem-card, .offer-card { padding: 40px 0; }
+    .offer-card:last-child { padding-left: 0; }
+    .form-row { grid-template-columns: 1fr; gap: 32px; }
+    .link-row { gap: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-inner">
+    <a href="https://www.mdmmarketing.com.au/" class="logo">MD MEDIA</a>
+    <a href="#apply" class="nav-cta">Work with us</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <span class="eyebrow">Founder Content</span>
+        <h1>AI can write.<br/><span class="accent">It can't be you.</span></h1>
+        <p class="lead">Every market is saturated. Every competitor has access to the same tools, the same AI, the same playbook. The only thing that can't be replicated is your voice.</p>
+
+        <div class="link-row">
+          <a href="#apply" class="link">Book your session <span class="arrow">→</span></a>
+          <a href="https://scorecard.mdmmarketing.com.au" target="_blank" class="link link-muted">Take the scorecard</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="https://static.wixstatic.com/media/c5a69a_f7f8354362924f419652f444431d3d59~mv2.jpg" alt="Founder in studio" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><div class="divider-line"></div></div>
+
+<!-- STATEMENT -->
+<section class="statement">
+  <div class="container-narrow">
+    <p>Every market is saturated. Every competitor has access to the same tools, the same AI, the same playbook. <span class="strong">The only thing that can't be replicated, automated, or outspent is your voice.</span> Your personal brand is the last real competitive advantage you have. <span class="accent">And most founders are leaving it on the table.</span></p>
+  </div>
+</section>
+
+<div class="divider"><div class="divider-line"></div></div>
+
+<!-- PROBLEM -->
+<section>
+  <div class="container-narrow">
+    <span class="eyebrow">The quiet cost</span>
+    <h2>Where founders <span class="accent">lose ground.</span></h2>
+    <p class="lead">Your expertise isn't the problem. Your positioning is. And every week it stays unclear is a week your market is deciding you don't exist.</p>
+
+    <div class="problem-grid">
+      <div class="problem-card fade-up">
+        <span class="problem-num">01 &nbsp;/&nbsp; Invisible</span>
+        <h3>Content keeps getting bumped.</h3>
+        <p>Weeks pass. Your audience forgets you exist. The founders showing up consistently are winning the trust that should be yours.</p>
+      </div>
+      <div class="problem-card fade-up delay-1">
+        <span class="problem-num">02 &nbsp;/&nbsp; Unsure</span>
+        <h3>You don't know how to show up.</h3>
+        <p>You know you should be putting yourself out there. You don't know what to say, where to start, or how to make it feel like you. So you don't.</p>
+      </div>
+      <div class="problem-card fade-up delay-2">
+        <span class="problem-num">03 &nbsp;/&nbsp; Forgettable</span>
+        <h3>Everyone looks the same online.</h3>
+        <p>In a market where everyone has access to the same tools, the founder with a real voice wins the deals. The one who doesn't gets scrolled past.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><div class="divider-line"></div></div>
+
+<!-- SHIFT -->
+<section class="shift">
+  <div class="container-narrow">
+    <span class="eyebrow">The shift</span>
+    <h2>Personal brand isn't vanity. <span class="accent">It's strategy.</span></h2>
+    <p>The founders winning right now aren't the ones with the best product. They're the ones people trust before the first sales call even happens.</p>
+    <p>That trust comes from one place: showing up consistently with a point of view only you can have. Not polished corporate content. Not AI slop. Real perspective from someone in the arena.</p>
+    <p>Your personal brand is what makes people choose you over the other ten options that look identical on paper. It's the reason someone replies to your DM, opens your email, or refers you without being asked.</p>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-section">
+  <div class="gallery-grid">
+    <div class="gallery-item"><img src="https://static.wixstatic.com/media/c5a69a_cd13a9d93dc546688cbc2bea09b5f479~mv2.jpg" alt="Founder portrait" /></div>
+    <div class="gallery-item wide"><img src="https://static.wixstatic.com/media/c5a69a_e0930420116743938928fde790433fbd~mv2.jpg" alt="Studio work" /></div>
+    <div class="gallery-item"><img src="https://static.wixstatic.com/media/c5a69a_116253b36d02423cbbb7ea79d7a5819d~mv2.jpg" alt="Founder in studio" /></div>
+  </div>
+</section>
+
+<!-- GAIN -->
+<section>
+  <div class="container-narrow">
+    <span class="eyebrow">What personal brand actually builds</span>
+    <h2>Reinforcement, <span class="accent">not reach.</span></h2>
+    <p class="lead">Personal brand isn't a growth hack. It's the reinforcement layer that makes everything else you do work harder, your sales calls, your offers, your referrals, your team's hiring.</p>
+
+    <div class="gain-grid">
+      <div class="gain-item fade-up">
+        <span class="gain-num">01</span>
+        <h3>Conviction in your positioning.</h3>
+        <p>You stop second guessing your message. Your audience stops second guessing you. The clarity of your voice becomes the clarity of your business.</p>
+      </div>
+      <div class="gain-item fade-up delay-1">
+        <span class="gain-num">02</span>
+        <h3>Trust that precedes the pitch.</h3>
+        <p>People show up to calls already knowing who you are and why you're worth working with. The selling gets easier because the trust is already there.</p>
+      </div>
+      <div class="gain-item fade-up delay-2">
+        <span class="gain-num">03</span>
+        <h3>A brand your business borrows from.</h3>
+        <p>When people trust you, they trust your business. Your name becomes shorthand for quality, and every offer you launch benefits from the equity you've built.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><div class="divider-line"></div></div>
+
+<!-- OFFERS -->
+<section>
+  <div class="container-narrow">
+    <span class="eyebrow">Two ways to work with us</span>
+    <h2>Pick the <span class="accent">level of build.</span></h2>
+    <p class="lead">Both paths run through the same strategic foundation. The difference is how much of the engine you want us to run.</p>
+
+    <div class="offers-grid">
+      <div class="offer-card fade-up">
+        <h3>Strategy + Content</h3>
+        <div class="offer-for">For founders with an internal team who need the playbook and the assets. We build the voice, the strategy, and the content. Your team handles distribution.</div>
+        <ul class="offer-list">
+          <li>Personal brand strategy and voice positioning</li>
+          <li>Content pillars mapped to your expertise</li>
+          <li>Monthly founder content shoots</li>
+          <li>Professional editing and post production</li>
+          <li>Content calendar and hook library</li>
+          <li>Quarterly strategy reviews</li>
+        </ul>
+      </div>
+
+      <div class="offer-card fade-up delay-1">
+        <span class="offer-tag">Most chosen</span>
+        <h3>Full Management</h3>
+        <div class="offer-for">For founders ready to hand off the entire brand engine. You show up for the shoot. We do the rest, strategy, production, distribution, ads, reporting.</div>
+        <ul class="offer-list">
+          <li>Everything in Strategy + Content</li>
+          <li>Multi platform management</li>
+          <li>Paid amplification on your best content</li>
+          <li>Email and newsletter management</li>
+          <li>Weekly reporting and optimisation</li>
+          <li>Dedicated account manager and pod</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><div class="divider-line"></div></div>
+
+<!-- CALL -->
+<section>
+  <div class="container-narrow">
+    <span class="eyebrow">In the call</span>
+    <h2>What happens when <span class="accent">we talk.</span></h2>
+    <p class="lead">One call. That's where it starts. We dig into your positioning, your voice, and your market, and map out what your personal brand strategy should look like. No templates. No "just be authentic" advice.</p>
+
+    <div class="call-grid">
+      <div class="call-item fade-up">
+        <span class="call-num">01</span>
+        <h3>Voice &amp; positioning clarity</h3>
+        <p>We identify what makes you different and how to turn that into content no one else can replicate.</p>
+      </div>
+      <div class="call-item fade-up delay-1">
+        <span class="call-num">02</span>
+        <h3>A personal brand roadmap</h3>
+        <p>Not a content calendar. A strategic plan for how your voice becomes your most valuable business asset.</p>
+      </div>
+      <div class="call-item fade-up delay-2">
+        <span class="call-num">03</span>
+        <h3>A clear next step</h3>
+        <p>You'll leave knowing exactly what to do, whether you work with us or not.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><div class="divider-line"></div></div>
+
+<!-- WHO FOR -->
+<section>
+  <div class="container-narrow">
+    <span class="eyebrow">Honest filter</span>
+    <h2>We work with founders who <span class="accent">refuse to blend in.</span></h2>
+    <p class="lead">AI levelled the playing field on production. The only edge left is personality, perspective, and presence. We help you turn those into a system.</p>
+
+    <div class="who-grid">
+      <div class="who-col yes">
+        <h3>This is for you if</h3>
+        <ul class="who-list">
+          <li>You have real expertise and a point of view the market needs to hear</li>
+          <li>You want your name to open doors, not just your business name</li>
+          <li>You're ready to show up consistently, not chase virality</li>
+          <li>You see brand as a long term asset, not a campaign</li>
+          <li>You want strategy behind every piece of content</li>
+        </ul>
+      </div>
+
+      <div class="who-col no">
+        <h3>It's not a fit if</h3>
+        <ul class="who-list">
+          <li>You want us to fake a voice that isn't yours</li>
+          <li>You expect viral growth in 30 days</li>
+          <li>You're not willing to show up for strategy and shoots</li>
+          <li>You'd rather AI wrote everything for you</li>
+          <li>You see personal brand as a vanity project</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><div class="divider-line"></div></div>
+
+<!-- ABOUT -->
+<section>
+  <div class="container-narrow">
+    <span class="eyebrow">The founders</span>
+    <h2>Built by people who've lived on <span class="accent">both sides of the camera.</span></h2>
+
+    <div class="about-grid">
+      <div class="about-image">
+        <img src="https://static.wixstatic.com/media/c5a69a_e14751cecceb4b1591d395ec8f2ea5dc~mv2.jpg" alt="Divina and Martin, co-founders of MD Media" />
+      </div>
+      <div class="about-text">
+        <p>Most agencies are built by marketers. We're not.</p>
+        <p>Divina spent years understanding what makes people follow, trust, and buy, not from a textbook, but from being in the world of influence and watching human behaviour up close.</p>
+        <p>Martin built his eye through media and production, learning what makes someone stop, stay, and feel something.</p>
+        <p>When they came together, MD Media was the only logical outcome. A studio that doesn't just produce content, it understands the psychology behind why content works.</p>
+        <p>Today, MD Media runs content ecosystems with a team of 15 for founders across finance, hospitality, real estate, health, automotive, and personal brands. Everything stays in house.</p>
+        <span class="founders-tag">Divina Armuela &nbsp;/&nbsp; Martin Kormushoski</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><div class="divider-line"></div></div>
+
+<!-- FAQ -->
+<section>
+  <div class="container-narrow">
+    <span class="eyebrow">Straight answers</span>
+    <h2>The questions you're <span class="accent">actually thinking.</span></h2>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Why not just do it myself with ChatGPT? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>You can. And the founders who do it well spend 15 plus hours a week on it and still sound like everyone else. We're not here to replace your voice. We're here to build the system around it so it scales without costing you your calendar.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">I'm camera shy. Is this even for me? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Most of our founders were, on day one. Our studio and shoot process is built to pull out the real version of you, not polish you into someone you're not. You won't feel like you're performing. You'll feel like you're talking.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How much of my time will this take? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>A half day shoot each month, plus short strategy check ins. That's it. The rest is ours. We built this for founders running businesses, not creators looking for a full time content job.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How long until it starts working? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Month one is voice, positioning, and first shoot. By month two, content is live and compounding. By month three, you have early signal. Real personal brand is a 6 to 12 month build, not a 30 day sprint.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What does it cost? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Investment is discussed on the call, after we understand your business and what you actually need. We're not the cheapest option. We're the one that treats your brand like the asset it is.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Do I own the content and strategy? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>All of it. Every asset, every strategy doc, every system we build is yours forever. This is your brand we're building, not ours.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPLY -->
+<section class="apply" id="apply">
+  <div class="container-narrow">
+    <span class="eyebrow">Limited monthly intake</span>
+    <h2>In a world full of AI content, be the one people <span class="accent">actually remember.</span></h2>
+    <p class="lead">While most founders outsource their voice to ChatGPT and wonder why nothing lands, the ones building real personal brands are pulling away from the pack. Tell us about you and we'll be in touch within 48 hours.</p>
+
+    <div class="form-wrap" id="formWrap">
+      <div class="form-title">Tell us about you</div>
+      <div class="form-sub">Takes 2 minutes. We review every application personally.</div>
+
+      <div id="formFields">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="fname">First name</label>
+            <input type="text" id="fname" class="form-input" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="lname">Last name</label>
+            <input type="text" id="lname" class="form-input" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="femail">Email</label>
+            <input type="email" id="femail" class="form-input" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="fphone">Phone</label>
+            <input type="tel" id="fphone" class="form-input" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="fbiz">Business name &amp; website</label>
+          <input type="text" id="fbiz" class="form-input" />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="findustry">What do you do?</label>
+            <input type="text" id="findustry" class="form-input" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="fsocial">Where's your brand currently?</label>
+            <input type="text" id="fsocial" class="form-input" placeholder="@handle or platform" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="fpackage">Which level feels right?</label>
+          <select id="fpackage" class="form-select">
+            <option value="">Select an option</option>
+            <option>Strategy + Content</option>
+            <option>Full Management</option>
+            <option>Not sure, help me figure it out</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="fgoal">What would a strong personal brand unlock for you?</label>
+          <textarea id="fgoal" class="form-textarea"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="ftimeline">When are you looking to start?</label>
+          <select id="ftimeline" class="form-select">
+            <option value="">Select timeline</option>
+            <option>Ready to start this month</option>
+            <option>Next 1 to 2 months</option>
+            <option>Next 3 months</option>
+            <option>Just exploring</option>
+          </select>
+        </div>
+
+        <button class="submit-btn" onclick="submitApplication()">Submit application →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-inner">
+    <div><strong>MD MEDIA MARKETING</strong> &nbsp;/&nbsp; Melbourne</div>
+    <div>
+      <a href="mailto:hello@mdmmarketing.com.au">hello@mdmmarketing.com.au</a>
+      <a href="https://scorecard.mdmmarketing.com.au" target="_blank">Scorecard</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const APPLY_WEBHOOK = 'https://script.google.com/macros/s/AKfycbyuiJhIMMyAp9oLmRpqJXRlF4GNhVPDl-Hj1VhCExecXneKsCdzPJRFdoDf62cMQ4lpJg/exec';
+
+  // Scroll reveal animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  function toggleFaq(btn) {
+    btn.parentElement.classList.toggle('open');
+  }
+
+  function val(id) { return document.getElementById(id).value.trim(); }
+
+  function submitApplication() {
+    const data = {
+      source: 'Founder Landing Application',
+      fname: val('fname'),
+      lname: val('lname'),
+      email: val('femail'),
+      phone: val('fphone'),
+      biz: val('fbiz'),
+      industry: val('findustry'),
+      social: val('fsocial'),
+      package: val('fpackage'),
+      goal: val('fgoal'),
+      timeline: val('ftimeline')
+    };
+
+    if (!data.fname || !data.lname || !data.email || !data.phone || !data.biz) {
+      alert('Please fill in name, email, phone, and business.');
+      return;
+    }
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(data.email)) {
+      alert('Please enter a valid email.');
+      return;
+    }
+
+    fetch(APPLY_WEBHOOK, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(data)
+    }).catch(err => console.log('Application error:', err));
+
+    document.getElementById('formFields').innerHTML = `
+      <div class="form-success">
+        <h3>Application received.</h3>
+        <p>We'll review your application and be in touch within 48 hours.</p>
+      </div>
+    `;
+  }
+</script>
+
+</body>
+</html>
